@@ -20,7 +20,7 @@
     "file"
   ],
   "description": "Vue3 Library Component for drag’n’drop file uploads with image previews..",
-  "main": "dist/dropzone-vue.common.js",
+  "main": "dist/dropzone-vue.es.min.js",
   "unpkg": "dist/dropzone-vue.umd.min.js",
   "files": [
     "dist/"
