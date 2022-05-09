@@ -42,7 +42,7 @@ export default function useUploadQueue({
       if (config.autoUpload) {
         processQueue();
       }
-      context.emit('uploaded', readonly(uploadedItems.map((item) => item.file)));
+      context.emit('uploaded', readonly(uploadedItems.map(({ file, response }) => ({ file, response }))));
     };
     const onError = (ids, error) => {
       if (config.autoUpload) {

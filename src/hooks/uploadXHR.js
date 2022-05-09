@@ -179,7 +179,10 @@ export default function useUploadXHR({ config, items }) {
             } else {
               // eslint-disable-next-line no-param-reassign
               item.status = STATUS.DONE;
-              console.debug(`file upload finished ${item.file.name}`);
+              if (response) {
+                // eslint-disable-next-line no-param-reassign
+                item.response = response;
+              }
             }
           });
         if (allDone === true) {
