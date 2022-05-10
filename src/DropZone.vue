@@ -163,6 +163,7 @@ export default defineComponent({
       filesize,
       processQueue: itemManager.processQueue,
       dropzone,
+      addFakeFile: itemManager.addFakeFile,
     };
   },
 });

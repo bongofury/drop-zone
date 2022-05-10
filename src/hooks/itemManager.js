@@ -115,10 +115,29 @@ export default function useItemManager({ config, context }) {
     context.emit('added-file', { file: items.all[id].file, id });
   };
 
+  const addFakeFile = (id, thumbnail) => {
+    console.debug('addFakeFile', id);
+    // Add the id
+    items.ids.push(id);
+    // eslint-disable-next-line no-param-reassign
+    items.all[id] = {
+      file: {
+        name: id,
+      },
+      thumbnail,
+      upload: { progress: 100 },
+      status: STATUS.DONE,
+      accepted: true,
+      id,
+    };
+    context.emit('added-fake-file', { id });
+  };
+
   const itemManager = {
     getItems: () => items,
     removeFile,
     addFile,
+    addFakeFile,
     processQueue,
   };
   return { itemManager };
