@@ -2,13 +2,15 @@ import { uuidv4 } from '@/utils';
 import STATUS from '@/utils/status';
 
 export default function useUploadXHR({ config, items }) {
-  const error = (uploadId, e, onError) => {
+  const error = (uploadId, e, onError, response) => {
     const idsWithError = [];
     Object.values(items.all)
       .filter((item) => item.upload && item.upload.id === uploadId)
       .forEach((item) => {
         // eslint-disable-next-line no-param-reassign
         item.status = STATUS.ERROR;
+        // eslint-disable-next-line no-param-reassign
+        item.response = response;
         if (!item.upload.retryErrorCounter) {
           // eslint-disable-next-line no-param-reassign
           item.upload.retryErrorCounter = config.maxRetryError;
@@ -153,7 +155,7 @@ export default function useUploadXHR({ config, items }) {
         console.debug(response);
       }
       if (!(xhr.status >= 200 && xhr.status < 300)) {
-        error(uploadId, e, onError);
+        error(uploadId, e, onError, response);
       } else {
         let allDone = true;
         Object.values(files)

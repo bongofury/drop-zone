@@ -31,7 +31,7 @@
         <slot name="success"><i class="gg-check-o"></i></slot>
       </div>
       <div class="dropzone__error-mark">
-        <slot name="error"><i class="gg-danger"></i></slot>
+        <slot name="error" :item="item"><i class="gg-danger"></i></slot>
       </div>
       <div class="dropzone__details" :class="[dropzoneDetailsClassName]">
         <div class="dropzone__file-size" >
